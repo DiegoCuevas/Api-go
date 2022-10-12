@@ -27,6 +27,17 @@ func GetAllBooks(w http.ResponseWriter, req *http.Request )  {
 	json.NewEncoder(w).Encode(books)
 }
 
+func GetBook(w http.ResponseWriter, req *http.Request )  {
+	params := mux.Vars(req)
+	for _, item := range books {
+		if item.ID == params["id"]{
+			json.NewEncoder(w).Encode(item)
+			break
+		}
+	}
+	json.NewEncoder(w).Encode(&Book{})
+}
+
 func main()  {
 	router := mux.NewRouter()
 
