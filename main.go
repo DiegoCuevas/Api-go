@@ -7,10 +7,25 @@ import (
 	"github.com/gorilla/mux" // modulo para las rutas
 )
 
+type Book struct {
+	ID 			string 		`json: "id,omitempty"`
+	Name 		string 		`json: "omit,omitempty"`
+	Author 	*Author 	`json:"author,omitempty"`
+}
+
+type Author struct {
+	FirstName 	string 		`json: "firstname,omitempty"`
+	LastName 		string 		`json: "lastname,omitempty"`
+}
+
+var books []Book
 
 func main()  {
 	router := mux.NewRouter()
-	
+
+	books = append(books, Book{ID:"1", Name: "Book1", Author: &Author{FirstName: "Diego", LastName: "Cuevas"}})
+	books = append(books, Book{ ID:"2", Name: "Book2", Author: &Author{FirstName: "Diego", LastName: "Cuevas"}})
+
 	// Rutas
 	router.HandleFunc("/book", GetAllBooks).Methods("GET")
 	router.HandleFunc("/book/{id}", GetBook).Methods("GET")
