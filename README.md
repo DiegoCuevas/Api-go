@@ -2,11 +2,11 @@
 Example Api to create a books
 
 ## Build
-  - $ go get github.com/gorilla/mux
-  - $ go build main.go
+  - ```$ go get github.com/gorilla/mux```
+  - ```$ go build main.go```
 
 ## Run 
-  - $ ./main
+  - ```$ ./main```
 
 ## Routes
   - Get all books -> http://localhost:3000/book
