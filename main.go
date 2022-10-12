@@ -38,6 +38,16 @@ func GetBook(w http.ResponseWriter, req *http.Request )  {
 	json.NewEncoder(w).Encode(&Book{})
 }
 
+func CreateBook(w http.ResponseWriter, req *http.Request )  {
+	params := mux.Vars(req)
+	var newbook Book
+	_ = json.NewDecoder(req.Body).Decode(&newbook)
+	newbook.ID = params["id"]
+	books = append(books, newbook)
+	json.NewEncoder(w).Encode(books)
+}
+
+
 func main()  {
 	router := mux.NewRouter()
 
