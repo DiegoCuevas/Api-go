@@ -2,6 +2,7 @@
 Example Api to create a books
 
 ## Build
+  - $ go get github.com/gorilla/mux
   - $ go build main.go
 
 ## Run 
