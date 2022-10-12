@@ -20,6 +20,13 @@ type Author struct {
 
 var books []Book
 
+// w: es para devolver una respuesta al navegador
+// req: cuando el navegador envia data para usarlo en el servidor
+
+func GetAllBooks(w http.ResponseWriter, req *http.Request )  {
+	json.NewEncoder(w).Encode(books)
+}
+
 func main()  {
 	router := mux.NewRouter()
 
